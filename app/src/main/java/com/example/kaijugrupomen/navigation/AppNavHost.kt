@@ -27,6 +27,7 @@ import com.example.kaijugrupomen.model.Rol
 import com.example.kaijugrupomen.ui.screen.PantallaAlertas
 import com.example.kaijugrupomen.ui.screen.PantallaCatalogo
 import com.example.kaijugrupomen.ui.screen.PantallaDetalleProducto
+import com.example.kaijugrupomen.ui.screen.PantallaEscanerQR
 import com.example.kaijugrupomen.ui.screen.PantallaFormularioProducto
 import com.example.kaijugrupomen.ui.screen.PantallaLogin
 import com.example.kaijugrupomen.ui.screen.PantallaMovimiento
@@ -130,6 +131,25 @@ fun AppNavHost(
                             popUpTo(Rutas.Catalogo.ruta) { inclusive = true }
                         }
                     }
+                )
+            }
+
+            composable(Rutas.Movimiento.ruta) {
+                usuarioActivo?.let { usuario ->
+                    PantallaMovimiento(
+                        viewModel = inventarioViewModel,
+                        usuario = usuario,
+                        onEscanear = { navController.navigate(Rutas.Escaner.ruta) }
+                    )
+                }
+            }
+            composable(Rutas.Escaner.ruta) {
+                PantallaEscanerQR(
+                    onCodigoLeido = { codigo ->
+                        inventarioViewModel.codigoLeido(codigo)
+                        navController.popBackStack()
+                    },
+                    onVolver = { navController.popBackStack() }
                 )
             }
             composable(Rutas.Detalle.ruta) {

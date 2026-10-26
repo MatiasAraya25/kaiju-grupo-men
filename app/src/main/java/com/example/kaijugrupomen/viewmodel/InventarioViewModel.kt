@@ -25,6 +25,20 @@ import java.util.Locale
 
 class InventarioViewModel(private val repositorio: InventarioRepository) : ViewModel() {
 
+    fun codigoLeido(codigo: String) {
+        val producto = productos.value.find { it.codigo.equals(codigo.trim(), ignoreCase = true) }
+        if (producto != null) {
+            seleccionarProductoMovimiento(producto.codigo)
+            _mensajeMovimiento.value = "Producto seleccionado: ${producto.nombre}"
+        } else {
+            _mensajeMovimiento.value = "El código \"$codigo\" no corresponde a ningún producto."
+        }
+    }
+
+    fun escaneoNoDisponible() {
+        _mensajeMovimiento.value = "Sin acceso a la cámara. Elige el producto manualmente."
+    }
+
     val productos: StateFlow<List<Producto>> = repositorio.productos.stateIn(
         scope = viewModelScope, started = SharingStarted.Eagerly, initialValue = emptyList()
     )
