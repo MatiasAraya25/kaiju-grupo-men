@@ -1,4 +1,4 @@
-package model
+package com.example.kaijugrupomen.model
 
 data class FormularioMovimientoEstado(
     val codigoProducto: String = "",

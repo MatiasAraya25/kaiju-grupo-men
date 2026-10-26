@@ -1,4 +1,4 @@
-package navigation
+package com.example.kaijugrupomen.navigation
 
 sealed class Rutas(val ruta: String) {
     object Login : Rutas("login")

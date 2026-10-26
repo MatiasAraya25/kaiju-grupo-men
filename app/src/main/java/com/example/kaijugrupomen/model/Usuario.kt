@@ -1,4 +1,4 @@
-package model
+package com.example.kaijugrupomen.model
 
 enum class Rol(val etiqueta: String) {
     ADMINISTRADOR("Administrador"),

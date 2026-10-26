@@ -1,11 +1,10 @@
-package repository
+package com.example.kaijugrupomen.repository
 
-import model.Movimiento
-import model.Producto
-import model.Rol
-import model.TipoMovimiento
-import model.Usuario
-
+import com.example.kaijugrupomen.model.Movimiento
+import com.example.kaijugrupomen.model.Producto
+import com.example.kaijugrupomen.model.Rol
+import com.example.kaijugrupomen.model.TipoMovimiento
+import com.example.kaijugrupomen.model.Usuario
 
 object DatosDePrueba {
 
@@ -48,18 +47,18 @@ object DatosDePrueba {
             30,
             "Llegada de mercadería",
             "2026-09-01 09:30",
-            "Carla Núñez"
+            "Natanael"
         ),
-        Movimiento(2, "K-001", TipoMovimiento.SALIDA_VENTA, 5, "Venta en tienda", "2026-09-03 17:10", "Bruno Díaz"),
-        Movimiento(3, "K-002", TipoMovimiento.ENTRADA, 12, "Llegada de mercadería", "2026-09-01 09:45", "Carla Núñez"),
-        Movimiento(4, "K-002", TipoMovimiento.SALIDA_VENTA, 8, "Venta web", "2026-09-05 12:20", "Bruno Díaz"),
-        Movimiento(5, "K-004", TipoMovimiento.ENTRADA, 6, "Llegada de mercadería", "2026-09-02 10:00", "Carla Núñez"),
-        Movimiento(6, "K-004", TipoMovimiento.SALIDA_VENTA, 4, "Venta en tienda", "2026-09-06 16:40", "Bruno Díaz"),
-        Movimiento(7, "K-006", TipoMovimiento.SALIDA_VENTA, 3, "Venta web", "2026-09-04 11:15", "Bruno Díaz"),
-        Movimiento(8, "K-006", TipoMovimiento.AJUSTE, 1, "Conteo físico: diferencia de una unidad", "2026-09-07 18:00", "Carla Núñez"),
-        Movimiento(9, "K-009", TipoMovimiento.ENTRADA, 10, "Llegada de mercadería", "2026-09-02 10:20", "Carla Núñez"),
-        Movimiento(10, "K-009", TipoMovimiento.SALIDA_VENTA, 4, "Venta en tienda", "2026-09-08 15:05", "Bruno Díaz"),
-        Movimiento(11, "K-011", TipoMovimiento.SALIDA_VENTA, 2, "Venta web", "2026-09-08 19:30", "Bruno Díaz"),
-        Movimiento(12, "K-011", TipoMovimiento.SALIDA_CONSUMO, 1, "Polera usada como exhibición", "2026-09-09 09:10", "Ana Torres")
+        Movimiento(2, "K-001", TipoMovimiento.SALIDA_VENTA, 5, "Venta en tienda", "2026-09-03 17:10", "Esteban"),
+        Movimiento(3, "K-002", TipoMovimiento.ENTRADA, 12, "Llegada de mercadería", "2026-09-01 09:45", "Natanael"),
+        Movimiento(4, "K-002", TipoMovimiento.SALIDA_VENTA, 8, "Venta web", "2026-09-05 12:20", "Esteban"),
+        Movimiento(5, "K-004", TipoMovimiento.ENTRADA, 6, "Llegada de mercadería", "2026-09-02 10:00", "Natanael"),
+        Movimiento(6, "K-004", TipoMovimiento.SALIDA_VENTA, 4, "Venta en tienda", "2026-09-06 16:40", "Esteban"),
+        Movimiento(7, "K-006", TipoMovimiento.SALIDA_VENTA, 3, "Venta web", "2026-09-04 11:15", "Esteban"),
+        Movimiento(8, "K-006", TipoMovimiento.AJUSTE, 9, "Conteo físico: faltaba una unidad", "2026-09-07 18:00", "Natanael"),
+        Movimiento(9, "K-009", TipoMovimiento.ENTRADA, 10, "Llegada de mercadería", "2026-09-02 10:20", "Natanael"),
+        Movimiento(10, "K-009", TipoMovimiento.SALIDA_VENTA, 4, "Venta en tienda", "2026-09-08 15:05", "Esteban"),
+        Movimiento(11, "K-011", TipoMovimiento.SALIDA_VENTA, 2, "Venta web", "2026-09-08 19:30", "Esteban"),
+        Movimiento(12, "K-011", TipoMovimiento.SALIDA_CONSUMO, 1, "Polera usada como exhibición", "2026-09-09 09:10", "Natanael")
     )
 }

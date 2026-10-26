@@ -1,6 +1,11 @@
-package model
+package com.example.kaijugrupomen.model
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "productos")
 data class Producto(
-    val codigo: String,
+    @PrimaryKey val codigo: String,
     val nombre: String,
     val descripcion: String,
     val categoria: String,
@@ -10,7 +15,6 @@ data class Producto(
     val stockMinimo: Int,
     val detalle: String = ""
 )
-
 
 object Categorias {
     val lista = listOf("Anime", "Manga", "Videojuegos")

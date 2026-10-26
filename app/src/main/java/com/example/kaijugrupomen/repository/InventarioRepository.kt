@@ -1,22 +1,30 @@
-package repository
+package com.example.kaijugrupomen.repository
 
-import model.Movimiento
-import model.Producto
-import model.Usuario
+import com.example.kaijugrupomen.model.Movimiento
+import com.example.kaijugrupomen.model.Producto
+import kotlinx.coroutines.flow.Flow
 
-class InventarioRepository {
+class InventarioRepository(
+    private val productoDao: ProductoDao,
+    private val movimientoDao: MovimientoDao
+) {
 
-    private val productos = DatosDePrueba.productos.toMutableList()
-    private val movimientos = DatosDePrueba.movimientos.toMutableList()
+    val productos: Flow<List<Producto>> = productoDao.obtenerTodos()
+    val movimientos: Flow<List<Movimiento>> = movimientoDao.obtenerTodos()
 
-    fun obtenerProductos(): List<Producto> = productos.toList()
+    suspend fun cargarDatosIniciales() {
+        if (productoDao.contar() == 0) {
+            productoDao.insertarTodos(DatosDePrueba.productos)
+            movimientoDao.insertarTodos(DatosDePrueba.movimientos)
+        }
+    }
 
-    fun obtenerUsuarios(): List<Usuario> = DatosDePrueba.usuarios
+    suspend fun agregarProducto(producto: Producto) = productoDao.insertar(producto)
 
-    fun obtenerMovimientos(codigoProducto: String): List<Movimiento> =
-        movimientos.filter { it.codigoProducto == codigoProducto }
+    suspend fun actualizarProducto(producto: Producto) = productoDao.actualizar(producto)
 
-    fun agregarProducto(producto: Producto) {
-        productos.add(producto)
+    suspend fun registrarMovimiento(movimiento: Movimiento, nuevoStock: Int) {
+        movimientoDao.insertar(movimiento)
+        productoDao.actualizarStock(movimiento.codigoProducto, nuevoStock)
     }
 }
