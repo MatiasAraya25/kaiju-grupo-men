@@ -83,7 +83,6 @@ fun PantallaAlertas(
                 }
                 Button(
                     onClick = {
-                        // Antes de Android 13 no existe el permiso: se envía directo
                         if (Build.VERSION.SDK_INT >= 33) pedirNotificaciones() else enviarAviso()
                     },
                     enabled = enAlerta.isNotEmpty(),

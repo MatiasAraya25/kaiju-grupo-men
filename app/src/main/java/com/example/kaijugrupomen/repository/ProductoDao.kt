@@ -2,6 +2,7 @@ package com.example.kaijugrupomen.repository
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.kaijugrupomen.model.Producto
@@ -20,6 +21,9 @@ interface ProductoDao {
 
     @Insert
     suspend fun insertarTodos(productos: List<Producto>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertarFaltantes(productos: List<Producto>)
 
     @Update
     suspend fun actualizar(producto: Producto)

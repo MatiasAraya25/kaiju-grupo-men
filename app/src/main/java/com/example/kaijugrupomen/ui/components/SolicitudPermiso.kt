@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
-/** Devuelve una función que ejecuta el flujo completo: verificar, explicar, pedir. */
 @Composable
 fun rememberSolicitudPermiso(
     permiso: String,

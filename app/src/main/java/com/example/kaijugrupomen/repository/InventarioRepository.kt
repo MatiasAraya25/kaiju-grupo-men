@@ -16,6 +16,8 @@ class InventarioRepository(
         if (productoDao.contar() == 0) {
             productoDao.insertarTodos(DatosDePrueba.productos)
             movimientoDao.insertarTodos(DatosDePrueba.movimientos)
+        } else {
+            productoDao.insertarFaltantes(DatosDePrueba.productos)
         }
     }
 

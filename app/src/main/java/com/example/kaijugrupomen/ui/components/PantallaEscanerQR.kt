@@ -53,7 +53,6 @@ fun PantallaEscanerQR(
     val yaLeido = remember { AtomicBoolean(false) }
     val proveedor = remember { arrayOfNulls<ProcessCameraProvider>(1) }
 
-    // Al salir de la pantalla se apaga la cámara y se liberan recursos
     DisposableEffect(Unit) {
         onDispose {
             proveedor[0]?.unbindAll()

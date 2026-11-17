@@ -36,7 +36,8 @@ object DatosDePrueba {
         Producto("K-009", "Polera Joystick Retro", "Control clásico en línea simple", "Videojuegos", "Polera", 12990, 6, 6, "Talla M · Rojo"),
         Producto("K-010", "Polera Boss Final", "Jefe final con diseño oscuro", "Videojuegos", "Polera", 15490, 11, 4, "Talla XL · Negro"),
         Producto("K-011", "Polera Nivel Secreto", "Mapa de mazmorra oculto", "Videojuegos", "Polera", 15490, 0, 3, "Talla S · Morado"),
-        Producto("K-012", "Polerón Kaiju Gigante", "Monstruo gigante bordado", "Anime", "Polerón", 29990, 7, 3, "Talla L · Morado")
+        Producto("K-012", "Polerón Kaiju Gigante", "Monstruo gigante bordado", "Anime", "Polerón", 29990, 7, 3, "Talla L · Morado"),
+        Producto("K-013", "Polera Rayquaza", "Dragón legendario en verde y amarillo", "Videojuegos", "Polera", 16990, 10, 4, "Talla M · Verde")
     )
 
     val movimientos = listOf(

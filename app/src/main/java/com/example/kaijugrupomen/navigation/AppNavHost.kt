@@ -18,11 +18,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.kaijugrupomen.data.remote.PokeApiClient
 import com.example.kaijugrupomen.model.Producto
+import com.example.kaijugrupomen.repository.PokemonRepository
 import com.example.kaijugrupomen.model.Rol
 import com.example.kaijugrupomen.ui.screen.PantallaAlertas
 import com.example.kaijugrupomen.ui.screen.PantallaCatalogo
@@ -31,12 +35,14 @@ import com.example.kaijugrupomen.ui.screen.PantallaEscanerQR
 import com.example.kaijugrupomen.ui.screen.PantallaFormularioProducto
 import com.example.kaijugrupomen.ui.screen.PantallaLogin
 import com.example.kaijugrupomen.ui.screen.PantallaMovimiento
+import com.example.kaijugrupomen.ui.screen.PantallaPokedex
 import com.example.kaijugrupomen.ui.theme.KaijuBlanco
 import com.example.kaijugrupomen.ui.theme.KaijuGrisTexto
 import com.example.kaijugrupomen.ui.theme.KaijuMorado
 import com.example.kaijugrupomen.ui.theme.KaijuNegro
 import com.example.kaijugrupomen.viewmodel.InventarioViewModel
 import com.example.kaijugrupomen.viewmodel.InventarioViewModelFactory
+import com.example.kaijugrupomen.viewmodel.PokedexViewModel
 import com.example.kaijugrupomen.viewmodel.SesionViewModel
 
 @Composable
@@ -160,7 +166,8 @@ fun AppNavHost(
                     onEditar = { producto ->
                         inventarioViewModel.prepararEdicion(producto)
                         navController.navigate(Rutas.Formulario.ruta)
-                    }
+                    },
+                    onEasterEgg = { navController.navigate(Rutas.Pokedex.ruta) }
                 )
             }
             composable(Rutas.Formulario.ruta) {
@@ -170,15 +177,19 @@ fun AppNavHost(
                     onGuardado = { navController.popBackStack() }
                 )
             }
-            composable(Rutas.Movimiento.ruta) {
-                usuarioActivo?.let { usuario ->
-                    PantallaMovimiento(viewModel = inventarioViewModel, usuario = usuario)
-                }
-            }
             composable(Rutas.Alertas.ruta) {
                 PantallaAlertas(
                     viewModel = inventarioViewModel,
                     onProductoClick = abrirDetalle
+                )
+            }
+            composable(Rutas.Pokedex.ruta) {
+                val pokedexViewModel: PokedexViewModel = viewModel(factory = viewModelFactory {
+                    initializer { PokedexViewModel(PokemonRepository(PokeApiClient.api)) }
+                })
+                PantallaPokedex(
+                    viewModel = pokedexViewModel,
+                    onVolver = { navController.popBackStack() }
                 )
             }
         }
